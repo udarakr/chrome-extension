@@ -1,0 +1,6 @@
+{
+    "local": "https://localhost:3101",
+    "dev": "https://cega.cloudextend.dev",
+    "staging": "https://staging.cega.cloudextend.io",
+    "prod": "https://prod.cega.cloudextend.io"
+}

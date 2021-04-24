@@ -1,0 +1,52 @@
+{
+    "manifest_version": 2,
+    "name": "CloudExtend Gmail for NetSuite-SDK-POC",
+    "description": "CloudExtend for NetSuite enables true cloud-to-cloud synchronization of your Gmail with NetSuite.",
+    "permissions": [
+        "activeTab",
+        "declarativeContent",
+        "https://mail.google.com/*",
+        "https://inbox.google.com/*",
+        "<APP_PERMISSION>"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "options_page": "options.html",
+    "version": "5.0.0.0",
+    "page_action": {
+        "default_icon": {
+            "16": "icons/Icon16.png"
+        },
+        "default_title": "CloudExtend Gmail for NetSuite",
+        "default_popup": "index.html"
+    },
+    "icons": {
+        "48": "icons/Icon48.png",
+        "128": "icons/Icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://mail.google.com/*",
+                "https://inbox.google.com/*"
+            ],
+            "js": [
+                "vendor/inboxsdk.js",
+                "index.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        "icons/Icon16.png",
+        "icons/Icon48.png",
+        "icons/Icon128.png"
+    ]
+}
