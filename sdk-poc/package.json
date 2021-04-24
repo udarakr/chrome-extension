@@ -5,7 +5,10 @@
   "private": true,
   "scripts": {
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",
-    "build": "webpack --mode=production --config config/webpack.config.js"
+    "build:prod": "webpack --config config/webpack.config.js --env prod --mode=production",
+    "build:local": "webpack --config config/webpack.config.js --env local --mode=development",
+    "build:dev": "webpack --config config/webpack.config.js --env dev --mode=development",
+    "build:staging": "webpack --config config/webpack.config.js --env staging --mode=production"
   },
   "devDependencies": {
     "copy-webpack-plugin": "6.4.1",
