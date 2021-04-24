@@ -2,10 +2,12 @@
 
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ZipFilesPlugin = require('webpack-zip-files-plugin');
 const replace = require("replace-in-file-webpack-plugin");
 const common = require("./webpack.common.js");
 const PATHS = require("./paths");
 const config = require("./environment.json");
+const build = "extension_" + Date.now();
 
 module.exports = (env) =>
   merge(common, {
@@ -38,5 +40,12 @@ module.exports = (env) =>
           ],
         },
       ]),
+      new ZipFilesPlugin({
+        entries: [
+          { src: './dist', dist: './' },
+        ],
+        output: './build/' + env + "_"+ build,
+        format: 'zip',
+      }),
     ],
   });
