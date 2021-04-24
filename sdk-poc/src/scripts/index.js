@@ -3,7 +3,7 @@
         appIframe = document.createElement('iframe');
         loggedInUserEmailId = sdk.User.getEmailAddress();
         conversationViewDisabled = sdk.User.isConversationViewDisabled();
-        appIframe.setAttribute('src', '<APP_HOST>');
+        appIframe.setAttribute('src', '<!--APP_HOST-->');
         appIframe.setAttribute('class', 'app-iframe');
         appIframe.setAttribute('name', 'cegaApp');
         sdk.Global.addSidebarContentPanel({
@@ -96,7 +96,7 @@
     }
 
     function postMessage(message){
-        window.frames.cegaApp.postMessage(JSON.stringify(message), '<APP_HOST>');
+        window.frames.cegaApp.postMessage(JSON.stringify(message), '<!--APP_HOST-->');
     } 
 
     function generateMessage(eventType, id, view) {

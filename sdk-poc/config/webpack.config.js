@@ -1,6 +1,7 @@
 "use strict";
 
 const { merge } = require("webpack-merge");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const replace = require("replace-in-file-webpack-plugin");
 const common = require("./webpack.common.js");
 const PATHS = require("./paths");
@@ -14,9 +15,10 @@ module.exports = (env) =>
       styles: PATHS.src + "/styles/main.css",
     },
     plugins: [
+      new CleanWebpackPlugin({dry: false}),
       new replace([
         {
-          dir: "build",
+          dir: "dist",
           files: ["manifest.json"],
           rules: [
             {
@@ -26,11 +28,11 @@ module.exports = (env) =>
           ],
         },
         {
-          dir: "build",
-          files: ["index.js"],
+          dir: "dist",
+          files: ["index.js", "index.html"],
           rules: [
             {
-              search: /<APP_HOST>/gi,
+              search: /<!--APP_HOST-->/gi,
               replace: config[env],
             },
           ],
