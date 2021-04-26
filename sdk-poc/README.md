@@ -1,6 +1,4 @@
 ## Build
 
-- npm run build:prod
-
-
-
+- production: npm run build:prod
+- Dev: npm run build:dev
